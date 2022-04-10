@@ -1,6 +1,23 @@
 Feature: Pricing
 
   @wip
+  Scenario Outline: Calculate your fee
+    Given The user is on the homepage
+    And The user navigates to "Pricing" page
+    When The user selects "<invCurr>" from Invoice Amount
+    And The user type "<invAmount>"
+    And The user selects "<payoutCurr>" from Payout Method
+    Then Applied rate is "<rate>"
+    And the user gets "<paidAmount>" in "<payoutCurr>"
+
+    Examples:
+      | invCurr | invAmount | payoutCurr | rate | paidAmount |
+      | USD     | 5000.00   | CAD        | 6.5% | 5,875.76   |
+      | GBP     | 5000.00   | TRY        | 6.5% | 89.832,70  |
+      | CAD     | 5000.00   | TRY        | 6.5% | 54.843,97  |
+
+
+  @wip
   Scenario: Currencies in Invoice Amount
     Given The user is on the homepage
     And The user navigates to "Pricing" page
@@ -83,18 +100,4 @@ Feature: Pricing
       | ZAR                |
 
 
-  @wip
-  Scenario: Calculate your fee
-    Given The user is on the homepage
-    And The user navigates to "Pricing" page
-    When The user selects "USD" from Invoice Amount
-    And The user type "5000.00"
-    And The user selects "BDT" from Payout Method
-    Then Applied rate is "6.5%"
-    And the user gets "401.436,54" in "BDT"
-
-
-
-    Scenario: test
-      Given test
 

@@ -70,7 +70,6 @@ public class PricingPage extends BasePage {
 	public void getRate(String expectedRate){
 		UtilityClass.staticWait(1);
 		String[] actualRate = rate.getText().split("Applied rate is ");
-		System.out.println(actualRate[1]);
 		Assert.assertEquals(actualRate[1],expectedRate);
 	}
 

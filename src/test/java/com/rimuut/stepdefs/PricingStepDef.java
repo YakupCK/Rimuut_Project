@@ -2,9 +2,7 @@ package com.rimuut.stepdefs;
 
 import com.rimuut.pages.HomePage;
 import com.rimuut.pages.PricingPage;
-import com.rimuut.utils.Driver;
 import com.rimuut.utils.PropertyReader;
-import com.rimuut.utils.UtilityClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,8 +11,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
@@ -47,10 +43,6 @@ public class PricingStepDef {
 	}
 
 	//--------------
-
-//	@When("The user type {double} and selects {string} from Invoice Amount")
-//	public void the_user_and_type_and_selects_from_Invoice_Amount(String currency, Double amount) {
-//	}
 
 	@When("The user selects {string} from Invoice Amount")
 	public void theUserSelectsFromInvoiceAmount(String currency) {
@@ -92,7 +84,6 @@ public class PricingStepDef {
 				.post(PropertyReader.getProperty("calculatorURL"));
 
 		String payout_format = response.path("payout_format");
-		System.out.println( payout_format );
 		payout_format = payout_format.replace(",", "");
 		payout_format = payout_format.replace(".", "");
 		expectedAmount = expectedAmount.replace(",", "");
