@@ -9,7 +9,6 @@ public abstract class BasePage {
 
 	protected WebDriver driver;
 
-	//to initialize @FindBy annotations with PageFactory class
 	BasePage() {
 		this.driver = Driver.getDriver();
 		PageFactory.initElements(driver, this);
